@@ -8,7 +8,7 @@ CHUNK_SIZE_REMOTE=16
 ## You don't have to edit anything below this line
 
 FILE=$1
-LOCAL_BLENDER=${2:blender}
+LOCAL_BLENDER=${2:-blender}
 
 tiles=($(seq 0 63))
 local_pid=true
