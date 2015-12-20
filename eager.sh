@@ -36,7 +36,7 @@ while [ -n "$tiles" ]; do
         first=${range[0]}
         last=${range[-1]}
         last=$((last+1))
-        echo "$(tput setaf 3)Run blender on local. Tiles range $first:$last $(tput sgr0)"
+        echo "$(tput setaf 3)Run blender on local. Tiles range $first-$last $(tput sgr0)"
         OUTPUT_DIR=$(realpath rendering_local) TILES_RANGE=$first:$last $LOCAL_BLENDER -b $FILE -E CYCLES -F PNG -t 0 -P eager.py 2>&1 > /dev/null &
         local_pid=$!
 
@@ -49,7 +49,7 @@ while [ -n "$tiles" ]; do
         first=${range[0]}
         last=${range[-1]}
         last=$((last+1))
-        echo "$(tput setaf 4)Run blender on remote. Tiles range $first:$last$(tput sgr0)"
+        echo "$(tput setaf 4)Run blender on remote. Tiles range $first-$last$(tput sgr0)"
         ssh -qt -t $SSH_HOST "TILES_RANGE=$first:$last blender -b rendering/$FILE -E CYCLES -F PNG -t 0 -P rendering/eager.py" 2>&1 > /dev/null &
         remote_pid=$!
 
