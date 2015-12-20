@@ -14,6 +14,6 @@ See the screencast:
 3. Run:  
 `./eager.sh <blend file> [path to blender executable]`
 
-Default blender executable is `blender`(i.e. blender installed on your system via package manager).
+Default blender executable is `blender` (i.e. blender installed on your system via package manager).
 
 I recommend setup key-based ssh authenticatiom without passphrase to remote host (or at least use `ssh-agent` if you want passphrase) to run script smoothly without typing ssh credentials every time.
