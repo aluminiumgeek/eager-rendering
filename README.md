@@ -14,7 +14,7 @@ See the screencast:
 `sudo aptitude install sshfs imagemagick feh`
 2. Clone the repo
 3. Copy `eager.sh` and `eager.py` files into directory contains your `.blend` file
-4. Fill `SSH_HOST` variable in `eager.sh` with your remote username@host. Be sure remote host has blender installed.
+4. Fill `SSH_HOSTS` variable in `eager.sh` with user@hostname for each of your remote machines. Be sure remote host has blender installed.
 5. Run:  
 `./eager.sh <blend file> [path to blender executable]`
 
