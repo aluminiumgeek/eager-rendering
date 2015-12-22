@@ -20,4 +20,4 @@ See the screencast:
 
 Default blender executable is `blender` (i.e. blender installed on your system via package manager).
 
-I recommend setup key-based ssh authenticatiom without passphrase (or at least use `ssh-agent`) to run script smoothly without typing ssh credentials every time.
+I suggest you setup key-based ssh authenticatiom without passphrase (or at least use `ssh-agent`) to run script smoothly without typing ssh credentials every time.
