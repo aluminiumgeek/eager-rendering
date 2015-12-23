@@ -7,7 +7,11 @@ CHUNK_SIZE=8
 ## You don't have to edit anything below this line
 
 FILE=$1
-LOCAL_BLENDER=${2:-blender}
+BLENDER_OPTIONS=${@:2}
+
+if [ -z "$BLENDER_OPTIONS" ]; then
+    BLENDER_OPTIONS="-E CYCLES -F PNG -t 0"
+fi
 
 tiles=($(seq 0 63))
 declare -A MACHINES=( [local]=true )
@@ -48,9 +52,9 @@ while [ -n "$tiles" ]; do
             last=$((last+1))
             echo "$(tput setaf 4)$host: run blender with tiles range $first-$last $(tput sgr0)"
             if [ "$host" = "local" ]; then
-                OUTPUT_DIR=$(realpath rendering_local) TILES_RANGE=$first:$last $LOCAL_BLENDER -b $FILE -E CYCLES -F PNG -t 0 -P eager.py 2>&1 > /dev/null &
+                OUTPUT_DIR=$(realpath rendering_local) TILES_RANGE=$first:$last blender -b $FILE $BLENDER_OPTIONS -P eager.py 2>&1 > /dev/null &
             else
-                ssh -qt -t $host "TILES_RANGE=$first:$last blender -b rendering/$FILE -E CYCLES -F PNG -t 0 -P rendering/eager.py" 2>&1 > /dev/null &
+                ssh -qt -t $host "TILES_RANGE=$first:$last blender -b rendering/$FILE $BLENDER_OPTIONS -P rendering/eager.py" 2>&1 > /dev/null &
             fi
             MACHINES[$host]=$!
 

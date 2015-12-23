@@ -16,8 +16,7 @@ See the screencast:
 3. Copy `eager.sh` and `eager.py` files into directory contains your `.blend` file
 4. Fill `SSH_HOSTS` variable in `eager.sh` with user@hostname for each of your remote machines. Be sure remote host has blender installed.
 5. Run:  
-`./eager.sh <blend file> [path to blender executable]`
-
-Default blender executable is `blender` (i.e. blender installed on your system via package manager).
+`./eager.sh <blend file> [blender options]`  
+  These options are set as defaults: `-E CYCLES -F PNG -t 0`
 
 I suggest you setup key-based ssh authentication without passphrase (or at least use `ssh-agent`) to run script smoothly without typing ssh credentials every time.
