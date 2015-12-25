@@ -7,7 +7,7 @@ The script will automatically prepare tiles for your scene and perform rendering
 The `eager.sh` script does its best to distribute non-rendered tiles across local and remote machines for rendering. Once all the tiles are ready, the final image composes from local and remote tiles.  
 See the screencast:
 
-[![asciicast](https://asciinema.org/a/dxohal000hrij9wsxzr5lzwbk.png)](https://asciinema.org/a/dxohal000hrij9wsxzr5lzwbk)
+[![asciicast](https://asciinema.org/a/dqp6llci5lf3445xu6nxfwt55.png)](https://asciinema.org/a/dqp6llci5lf3445xu6nxfwt55)
 
 ## Setup and run
 1. Install requirements:  
