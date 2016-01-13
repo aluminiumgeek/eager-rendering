@@ -12,19 +12,20 @@ for j in range(x_tiles):
         tiles.append((count, i, j))
         count += 1
 
-directory = os.getenv('OUTPUT_DIR', os.path.dirname(os.path.realpath(__file__)))
-tiles_range = os.getenv('TILES_RANGE').split(':') if os.getenv('TILES_RANGE') else (0, len(tiles))
 hostname = os.uname()[1]
+directory = os.getenv('OUTPUT_DIR', os.path.dirname(os.path.realpath(__file__)))
+tiles_range = os.getenv('TILES_RANGE', '0:{}'.format(total)).split(':')
+tile_from, tile_to = tuple(map(int, tiles_range))
 
 bpy.context.scene.render.use_border = True
 
-for i, current_x, current_y in tiles[int(tiles_range[0]):int(tiles_range[1])]:
+for i, current_x, current_y in tiles[tile_from:tile_to]:
     print("{}: rendering {}/{}".format(hostname, i + 1, total))
 
-    min_x = current_x / float(x_tiles)
-    max_x = (current_x + 1) / float(x_tiles)
-    min_y = 1 - (current_y + 1) / float(y_tiles)
-    max_y = 1 - current_y / float(y_tiles)
+    min_x = current_x / x_tiles
+    max_x = (current_x + 1) / x_tiles
+    min_y = 1 - (current_y + 1) / y_tiles
+    max_y = 1 - current_y / y_tiles
 
     # info = ("min_x: {}, max_x: {}\n"
     #        "min_y: {}, max_y: {}")
