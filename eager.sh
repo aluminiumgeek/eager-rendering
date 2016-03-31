@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Configurable variables
 SSH_HOSTS=(username@hostname username@another-hostname username@third-example-hostname)
 CHUNK_SIZE=8
